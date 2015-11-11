@@ -72,14 +72,22 @@ class RenameActionView(ContentsBaseAction):
 
             newid = self.request.form['newid_' + index].encode('utf8')
             newtitle = self.request.form['newtitle_' + index]
+            newtitle_en = self.request.form['newtitle_en_' + index]
+
             try:
                 obid = obj.getId()
                 title = obj.Title()
                 change_title = newtitle and title != newtitle
+                change_title_en = newtitle_en and title_en != newtitle_en
                 if change_title:
                     getSecurityManager().validate(obj, obj, 'setTitle',
                                                   obj.setTitle)
                     obj.setTitle(newtitle)
+                    notify(ObjectModifiedEvent(obj))
+                if change_title_en:
+#                     getSecurityManager().validate(obj, obj, 'setTitle',
+#                                                   obj.setTitle)
+                    obj.title_en = newtitle_en
                     notify(ObjectModifiedEvent(obj))
                 if newid and obid != newid:
                     parent = aq_parent(aq_inner(obj))

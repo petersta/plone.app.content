@@ -7,6 +7,8 @@
       <input name="UID_<%= index %>" type="hidden" value="<%- item.UID %>" />
       <label i18n:translate="label_title">Title</label>
       <input class="form-control" name="newtitle_<%= index %>" value="<%= item.Title %>" />
+      <label i18n:translate="label_title_en">English Title</label>
+      <input class="form-control" name="newtitle_en_<%= index %>" value="<%= item.title_en %>" />
       <label i18n:translate="label_short_name">Short name</label>
       <input class="form-control" name="newid_<%= index %>" value="<%= item.id %>" />
 
