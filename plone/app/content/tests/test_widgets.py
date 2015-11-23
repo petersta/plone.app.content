@@ -419,6 +419,33 @@ class BrowserTest(unittest.TestCase):
         data = json.loads(view())
         self.assertEquals(data['error'], 'Vocabulary lookup not allowed.')
 
+    def testSourceTextQuery(self):
+        from z3c.form.browser.text import TextWidget
+        from zope.interface import implementer
+        from zope.interface import Interface
+        from zope.schema import Choice
+        from zope.schema.interfaces import ISource
+
+        @implementer(ISource)
+        class DummyCatalogSource(object):
+            def search(self, query):
+                return [Mock(value=Mock(id=query))]
+
+        widget = TextWidget(self.request)
+        widget.context = self.portal
+        widget.field = Choice(source=DummyCatalogSource())
+        widget.field.interface = Interface
+
+        from plone.app.content.browser.vocabulary import SourceView
+        view = SourceView(widget, self.request)
+        self.request.form.update({
+            'query': 'foo',
+            'attributes': 'id',
+        })
+        data = json.loads(view())
+        self.assertEquals(len(data['results']), 1)
+        self.assertEquals(data['results'][0]['id'], 'foo')
+
     def testQueryStringConfiguration(self):
         view = QueryStringIndexOptions(self.portal, self.request)
         data = json.loads(view())
@@ -437,4 +464,18 @@ class BrowserTest(unittest.TestCase):
         self.assertTrue(data['UID'] is not None)
         # clean it up...
         self.portal.manage_delObjects(['test.xml'])
+        transaction.commit()
+
+    def testFileUploadTxt(self):
+        view = FileUploadView(self.portal, self.request)
+        from plone.namedfile.file import FileChunk
+        chunk = FileChunk('foobar')
+        chunk.filename = 'test.txt'
+        self.request.form['file'] = chunk
+        self.request.REQUEST_METHOD = 'POST'
+        data = json.loads(view())
+        self.assertEqual(data['url'], 'http://nohost/plone/test.txt')
+        self.assertTrue(data['UID'] is not None)
+        # clean it up...
+        self.portal.manage_delObjects(['test.txt'])
         transaction.commit()
