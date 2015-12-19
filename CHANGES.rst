@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.14 (unreleased)
+3.0.16 (unreleased)
 -------------------
 
 New:
@@ -10,15 +10,43 @@ New:
 
 Fixes:
 
-- Fix upload of txt files in folder_contents (#33, #58)
+- *add item here*
+
+
+3.0.15 (2015-12-15)
+-------------------
+
+New:
+
+- Ensure the base context allows ordering during rearranging.
+  [Gagaro]
+
+Fixes:
+
+- Fix case where non-dexterity object did not properties
+  [vangheem]
+
+- Fixed rearranging for archetypes.
+  [Gagaro]
+
+- Fixed error message displaying during rearranging.
+  [Gagaro]
+
+
+3.0.14 (2015-11-26)
+-------------------
+
+Fixes:
+
+- Fixed upload of txt files in folder_contents (#33, #58).
   [ale-rt]
 
 - Cleanup and rework: contenttype-icons and showing thumbnails
-  for images/leadimages in listings
+  for images/leadimages in listings.
   https://github.com/plone/Products.CMFPlone/issues/1226
   [fgrcon]
 
-- Fix @@getSource view to work with a text query
+- Fixed @@getSource view to work with a text query
   (as done by the ajax autocomplete widget)
   in addition to a querystring widget query.
   [davisagli]
