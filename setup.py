@@ -2,7 +2,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '3.0.17.1957.dev0'
+version = '3.0.21.1957.dev0'
 
 setup(
     name='plone.app.content',
@@ -22,7 +22,7 @@ setup(
     keywords='plone content views viewlet',
     author='Plone Foundation',
     author_email='plone-developers@lists.sourceforge.net',
-    url='http://pypi.python.org/pypi/plone.app.content',
+    url='https://pypi.python.org/pypi/plone.app.content',
     license='GPL version 2',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['plone', 'plone.app'],
