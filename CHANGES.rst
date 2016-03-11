@@ -9,6 +9,12 @@ Changelog
 
 3.0.16.1957 (2015-12-19)
 ------------------------
+3.0.21 (unreleased)
+-------------------
+
+Incompatibilities:
+
+- *add item here*
 
 New:
 
@@ -17,6 +23,55 @@ New:
 Fixes:
 
 - *add item here*
+
+
+3.0.20 (2016-02-27)
+-------------------
+
+Fixes:
+
+- Fixed tests for adding creators to content.  [vangheem]
+
+
+3.0.19 (2016-02-26)
+-------------------
+
+Fixes:
+
+- Add fallback to global vocabulary permission check when permission
+  checker can't be found.
+  [alecm]
+
+
+3.0.18 (2016-02-19)
+-------------------
+
+Fixes:
+
+- Added translation functionality to  folder content panel.
+  https://github.com/plone/Products.CMFPlone/issues/1398
+  [terapyon]
+
+
+3.0.17 (2016-02-08)
+-------------------
+
+Fixes:
+
+- Fixed error message unicode error in rename action.
+  [Gagaro]
+
+- Fixed errors when cutting and copying objects in folder contents.
+  [vangheem]
+
+
+3.0.16 (2016-01-08)
+-------------------
+
+Fixes:
+
+- Fixed renaming when only changing title.
+  [Gagaro]
 
 
 3.0.15 (2015-12-15)
